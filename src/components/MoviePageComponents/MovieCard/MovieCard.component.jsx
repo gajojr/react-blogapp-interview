@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import MovieComments from '../MovieComments/MovieComments.component';
 import ThumbnailVideo from '../ThumbnailVideo/ThumbnailVideo.component';
+import AddCommentForm from '../AddCommentForm/AddCommentForm.component';
 
 const MovieCard = ({ id }) => {
     const [movie, setMovie] = useState('');
@@ -25,6 +26,8 @@ const MovieCard = ({ id }) => {
             <ThumbnailVideo imdbId={movie.imdbId} />
 
             <MovieComments movieId={id} />
+
+            <AddCommentForm />
         </div>
     )
 }
