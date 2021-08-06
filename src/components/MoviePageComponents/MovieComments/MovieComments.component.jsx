@@ -10,14 +10,32 @@ const MovieComments = ({ movieId }) => {
 
             setComments(response.data);
         })();
-    }, [])
+    }, []);
+
+    const extractDate = (date) => {
+        const parts = date.split('-');
+        console.log(parts);
+
+        const day = parts[2].substr(0, parts[2].indexOf('T'));
+        const time = parts[2].substring(parts[2].indexOf('T') + 1, parts[2].indexOf('.'));
+        const month = parts[1];
+        const year = parts[0];
+
+        const newDateFormat = `${day}.${month}.${year} at ${time}`;
+        return newDateFormat;
+    }
 
     return (
         <div>
             <h4>Comments:</h4>
+            <hr />
 
             {comments && comments.map(comment => (
-                <p key={comment.id}>{comment.text}</p>
+                <div key={comment.id}>
+                    <p>{comment.text} </p>
+                    <p>{extractDate(comment.createdAt)}</p>
+                    <hr />
+                </div>
             ))}
         </div>
     )
