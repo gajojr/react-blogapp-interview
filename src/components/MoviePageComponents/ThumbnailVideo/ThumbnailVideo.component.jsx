@@ -16,7 +16,10 @@ const ThumbnailVideo = ({ imdbId }) => {
 
         fetch(`https://imdb-api.com/en/API/YouTubeTrailer/${process.env.REACT_APP_IMDB_API_KEY}/${imdbId}`, requestOptions)
             .then(response => response.text())
-            .then(result => setThumbnailUrl(JSON.parse(result).videoUrl))
+            .then(result => {
+                console.log(JSON.parse(result).videoUrl.replace('watch', 'embed'));
+                setThumbnailUrl(JSON.parse(result).videoUrl.replace('watch?v=', 'embed/'));
+            })
             .catch(error => console.log('error', error));
     }, [imdbId]);
 
