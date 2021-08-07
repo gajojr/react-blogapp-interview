@@ -5,6 +5,8 @@ import MovieComments from '../MovieComments/MovieComments.component';
 import ThumbnailVideo from '../ThumbnailVideo/ThumbnailVideo.component';
 import AddCommentForm from '../AddCommentForm/AddCommentForm.component';
 
+import './MovieCard.styles.css';
+
 const MovieCard = ({ id }) => {
     const [movie, setMovie] = useState('');
 
@@ -18,17 +20,19 @@ const MovieCard = ({ id }) => {
     }, []);
 
     return (
-        <div>
+        <main className='movie-card-container'>
             <h1>{movie.name}</h1>
-            <p>{movie.description}</p>
-            <img src={movie.imageUrl} alt="movie thumbnail" />
+            <div className='description-and-thumbnail'>
+                <p>{movie.description}</p>
+                <img src={movie.imageUrl} alt="movie thumbnail" />
+            </div>
             <br />
             <ThumbnailVideo imdbId={movie.imdbId} />
 
             <MovieComments movieId={id} />
 
             <AddCommentForm />
-        </div>
+        </main>
     )
 }
 

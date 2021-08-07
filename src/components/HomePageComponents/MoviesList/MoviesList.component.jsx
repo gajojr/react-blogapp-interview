@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 
+import './MoviesList.style.css';
+
 const MoviesList = ({ categories, movies }) => {
-    const [currentCategory, setCurrentCategory] = useState('');
+    const [currentCategory, setCurrentCategory] = useState('all');
 
     const getByCategory = (moviesToFilter) => {
         if (!moviesToFilter.length) {
@@ -11,7 +13,7 @@ const MoviesList = ({ categories, movies }) => {
 
         console.log('kategorija', currentCategory);
 
-        if (currentCategory === '') {
+        if (currentCategory === 'all') {
             return moviesToFilter;
         }
 
@@ -23,29 +25,35 @@ const MoviesList = ({ categories, movies }) => {
     }
 
     return (
-        <div>
+        <main className='movies-list-container'>
             <div>
                 <h3>Categories:</h3>
 
                 <form>
+                    <label className='movie-label'>
+                        <input type="radio" onChange={e => setCurrentCategory(e.target.value)} checked={currentCategory.toString() === 'all' ? true : false} name='category' value={'all'} onClick={() => setCurrentCategory('all')} />
+                        All
+                    </label>
                     {categories.map(category => (
-                        <label key={category.id} style={{ marginLeft: 5, display: 'flex', alignItems: 'center' }}>
-                            {category.name}
+                        <label key={category.id} className='movie-label'>
                             <input type="radio" onChange={e => setCurrentCategory(e.target.value)} checked={currentCategory.toString() === category.id ? true : false} name='category' value={category.id} onClick={() => setCurrentCategory(category.id)} />
+                            {category.name}
                         </label>
                     ))}
+                    <hr />
                 </form>
 
             </div>
 
-            {getByCategory(movies).map(movie => (
+            {getByCategory(movies).map((movie, idx) => (
                 <div key={movie.id}>
-                    <h3>{movie.name}</h3>
+                    <h3>{idx + 1}. {movie.name}</h3>
                     <p>{movie.description}</p>
-                    <Link to={`movies/${movie.id}`}>See movie</Link>
+                    <Link to={`movies/${movie.id}`} className='link'>See movie</Link>
+                    <hr />
                 </div>
             ))}
-        </div>
+        </main>
     )
 }
 

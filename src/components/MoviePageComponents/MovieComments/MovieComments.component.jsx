@@ -1,5 +1,7 @@
 import axios from 'axios';
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
+
+import './MovieComments.styles.css';
 
 const MovieComments = ({ movieId }) => {
     const [comments, setComments] = useState([]);
@@ -26,7 +28,7 @@ const MovieComments = ({ movieId }) => {
     }
 
     return (
-        <div>
+        <section className='comments-container'>
             <h4>Comments:</h4>
             <hr />
 
@@ -37,7 +39,7 @@ const MovieComments = ({ movieId }) => {
                     <hr />
                 </div>
             ))}
-        </div>
+        </section>
     )
 }
 

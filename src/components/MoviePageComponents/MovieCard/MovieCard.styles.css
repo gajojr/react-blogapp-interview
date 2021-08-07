@@ -1,0 +1,31 @@
+.movie-card-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.description-and-thumbnail {
+    display: flex;
+    justify-content: center;
+    width: 50%;
+}
+
+@media(max-width: 768px) {
+    .description-and-thumbnail {
+        width: 60%;
+    }
+}
+
+@media(max-width: 623px) {
+    .description-and-thumbnail {
+        width: 80%;
+        flex-direction: column;
+    }
+}
+
+@media(max-width: 480px) {
+    .description-and-thumbnail {
+        width: 95%;
+    }
+}

@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react'
+import './ThumbnailVideo.styles.css';
+
 require('dotenv').config();
 
 const ThumbnailVideo = ({ imdbId }) => {
@@ -17,7 +19,7 @@ const ThumbnailVideo = ({ imdbId }) => {
     }, []);
 
     return (
-        <iframe width="560" height="315" src={thumbnailUrl} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+        <iframe className='trailer' src="https://www.youtube.com/embed/dvfH4sy5zPU" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
     )
 }
 

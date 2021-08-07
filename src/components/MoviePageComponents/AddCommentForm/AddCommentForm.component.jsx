@@ -4,32 +4,39 @@ import { useAuth0 } from "@auth0/auth0-react";
 import LoginButton from '../../AuthOComponents/LoginButton/LoginButton.component';
 import LogoutButton from '../../AuthOComponents/LogoutButton/LogoutButton.component';
 
+import './AddCommentForm.styles.css';
+
 const AddCommentForm = () => {
     const [isAuthenicated, setIsAuthenticated] = useState(useAuth0().isAuthenticated);
 
     const postComment = e => {
         e.preventDefault();
+        console.log(e.target.comment.value);
 
         if (!isAuthenicated) {
             alert('You are not authenticated, press login to authenticate');
             return;
         }
 
-        console.log(e.target.comment.value);
+        if (!e.target.comment.value.length) {
+            alert('No text provided');
+            return;
+        }
+
         alert('Your comment is now saved');
     }
 
     return (
-        <div>
-            <form onSubmit={postComment}>
+        <section className='post-comment-form-wrapper'>
+            <form onSubmit={postComment} className='post-comment-form'>
                 Add comment:
-                <input type="text" name="comment" maxLength={200} />
+                <textarea className='comment-input' name="comment" cols="47" rows="10"></textarea>
 
-                <button>Post</button>
+                <button className='post-comment-button'>Post</button>
             </form>
 
             {!isAuthenicated ? <LoginButton /> : <LogoutButton />}
-        </div>
+        </section>
     )
 }
 

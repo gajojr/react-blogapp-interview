@@ -1,0 +1,14 @@
+.movies-list-container {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+}
+
+.movie-label {
+    display: flex;
+    align-items: center;
+}
+
+.link {
+    text-decoration: none;
+}
