@@ -17,7 +17,7 @@ const MovieCard = ({ id }) => {
             console.log(response.data.imdbId);
             setMovie(response.data);
         })();
-    }, []);
+    }, [id]);
 
     return (
         <main className='movie-card-container'>

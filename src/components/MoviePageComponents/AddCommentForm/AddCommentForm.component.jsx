@@ -7,7 +7,7 @@ import LogoutButton from '../../AuthOComponents/LogoutButton/LogoutButton.compon
 import './AddCommentForm.styles.css';
 
 const AddCommentForm = () => {
-    const [isAuthenicated, setIsAuthenticated] = useState(useAuth0().isAuthenticated);
+    const [isAuthenicated] = useState(useAuth0().isAuthenticated);
 
     const postComment = e => {
         e.preventDefault();
